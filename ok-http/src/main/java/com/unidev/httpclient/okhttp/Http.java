@@ -2,13 +2,25 @@ package com.unidev.httpclient.okhttp;
 
 import okhttp3.OkHttpClient;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Class to do http requests
  */
 public class Http {
 
-    public static OkHttpClient.Builder addUserAgent(OkHttpClient.Builder builder, String userAgent) {
+    /**
+     * Set request timeout in MS
+     */
+    public static OkHttpClient.Builder timeout(OkHttpClient.Builder builder, int timeout) {
+        builder.callTimeout(timeout, TimeUnit.MILLISECONDS);
+        builder.connectTimeout(timeout, TimeUnit.MILLISECONDS);
+        builder.readTimeout(timeout, TimeUnit.MILLISECONDS);
+        builder.writeTimeout(timeout, TimeUnit.MILLISECONDS);
+        return builder;
+    }
 
+    public static OkHttpClient.Builder userAgent(OkHttpClient.Builder builder, String userAgent) {
         builder.addNetworkInterceptor(chain -> chain.proceed(
                 chain.request()
                         .newBuilder()
