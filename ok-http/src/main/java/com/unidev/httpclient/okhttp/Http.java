@@ -1,5 +1,8 @@
 package com.unidev.httpclient.okhttp;
 
+import com.unidev.httpclient.SocksSSLSocketFactory;
+import com.unidev.httpclient.SocksSocketFactory;
+import com.unidev.httpclient.TrustAllX509TrustManager;
 import okhttp3.OkHttpClient;
 
 import java.util.concurrent.TimeUnit;
@@ -9,6 +12,14 @@ import java.util.concurrent.TimeUnit;
  */
 public class Http {
 
+    /**
+     * Configure socks proxy.
+     */
+    public static OkHttpClient.Builder socksProxy(OkHttpClient.Builder builder, String ip, int port) {
+        builder.socketFactory(new SocksSocketFactory(ip, port));
+        builder.sslSocketFactory(new SocksSSLSocketFactory(ip, port), TrustAllX509TrustManager.INSTANCE);
+        return builder;
+    }
     /**
      * Set request timeout in MS
      */
