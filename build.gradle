@@ -1,0 +1,12 @@
+subprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'idea'
+
+    group = "com.com.unidev.httpclient"
+    version = "0.0.1-SNAPSHOT"
+
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+
+}
