@@ -5,7 +5,8 @@ Library to provide ready to use HTTP client
 Tech stack:
  * gradle
  * apache http client
- * java 8
+ * ok http
+ * java 11
 
 
 # License
