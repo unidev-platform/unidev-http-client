@@ -2,9 +2,7 @@ package com.unidev.httpclient;
 
 import javax.net.SocketFactory;
 import java.io.IOException;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.UnknownHostException;
+import java.net.*;
 
 /**
  * Socket factory which create Sockets through provided socks server.
@@ -22,21 +20,28 @@ public class SocksSocketFactory extends SocketFactory {
 
     @Override
     public Socket createSocket(String s, int i) throws IOException, UnknownHostException {
-        return null;
+        return createSocket(InetAddress.getByName(s), i);
     }
 
     @Override
     public Socket createSocket(String s, int i, InetAddress inetAddress, int i1) throws IOException, UnknownHostException {
-        return null;
+        Socket socket = createSocket(s, i);
+        socket.bind(new InetSocketAddress(inetAddress, i1));
+        return socket;
     }
 
     @Override
     public Socket createSocket(InetAddress inetAddress, int i) throws IOException {
-        return null;
+        Proxy proxy = new Proxy(Proxy.Type.SOCKS, new InetSocketAddress(socksIp, socksPort));
+        Socket socks = new Socket(proxy);
+        socks.connect(new InetSocketAddress(inetAddress, i));
+        return socks;
     }
 
     @Override
     public Socket createSocket(InetAddress inetAddress, int i, InetAddress inetAddress1, int i1) throws IOException {
-        return null;
+        Socket socket = createSocket(inetAddress, i);
+        socket.bind(new InetSocketAddress(inetAddress, i1));
+        return socket;
     }
 }

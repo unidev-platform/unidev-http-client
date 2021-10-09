@@ -4,13 +4,20 @@ import com.unidev.httpclient.SocksSSLSocketFactory;
 import com.unidev.httpclient.SocksSocketFactory;
 import com.unidev.httpclient.TrustAllX509TrustManager;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 /**
  * Class to do http requests
  */
-public class Http {
+public class OkHttp {
+
+    public static OkHttpClient.Builder builder() {
+        return new OkHttpClient.Builder();
+    }
 
     /**
      * Configure socks proxy.
@@ -45,10 +52,30 @@ public class Http {
         return new OkHttpClient(builder);
     }
 
-    private final OkHttpClient okHttpClient;
+    private final OkHttpClient client;
 
-    public Http(OkHttpClient okHttpClient) {
-        this.okHttpClient = okHttpClient;
+    public OkHttp(OkHttpClient client) {
+        this.client = client;
+    }
+
+    public OkHttp(OkHttpClient.Builder builder) {
+        this.client = new OkHttpClient(builder);
+    }
+
+    public OkHttp() {
+        this.client = new OkHttpClient();
+    }
+
+    public String get(String url) {
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+
+        try (Response response = client.newCall(request).execute()) {
+            return response.body().string();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

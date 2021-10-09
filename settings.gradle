@@ -1,3 +1,4 @@
 
-rootProject.name = 'com.unidev-http-client'
+rootProject.name = 'unidev-http-client'
+
 include('ok-http')
