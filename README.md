@@ -15,6 +15,20 @@ Local build:
 
 
 HTTP client usage
+
+Gradle file:
+```
+...
+repositories {
+	maven { url 'https://jitpack.io' }
+}
+...
+dependencies {
+	implementation('com.github.unidev-platform:unidev-http-client:0.0.12')
+}
+
+```
+Usage in code:
 ```
         String page = new OkHttp().get("http://canyouseeme.org/");
         String ip = StringUtils.substringBetween(page, "id=\"ip\" type=\"text\" value=\"", "\"");
