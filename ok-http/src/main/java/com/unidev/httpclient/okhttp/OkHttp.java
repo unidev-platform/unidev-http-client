@@ -2,6 +2,7 @@ package com.unidev.httpclient.okhttp;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 import java.io.IOException;
@@ -64,6 +65,13 @@ public class OkHttp {
         this.client = new OkHttpClient();
     }
 
+    public OkHttpClient getClient() {
+        return this.client;
+    }
+
+    /**
+     * Simplified get request.
+     */
     public String get(String url) {
         Request request = new Request.Builder()
                 .url(url)
@@ -75,5 +83,22 @@ public class OkHttp {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Simplified post request.
+     */
+    public String post(String url, RequestBody body) {
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+        try (Response response = client.newCall(request).execute()) {
+            return response.body().string();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 
 }

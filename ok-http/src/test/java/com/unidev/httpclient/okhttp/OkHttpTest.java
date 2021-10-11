@@ -1,6 +1,8 @@
 package com.unidev.httpclient.okhttp;
 
+import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
+import okhttp3.RequestBody;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
@@ -33,6 +35,15 @@ class OkHttpTest {
 
         assertNotNull(proxyIp);
         assertNotEquals(proxyIp, ip);
+    }
+
+    @Test
+    void testPostRequest() {
+        RequestBody formBody = new FormBody.Builder()
+                .add("key", "value")
+                .build();
+        String output = new OkHttp().post("http://canyouseeme.org/", formBody);
+        System.out.println(output);
     }
 
 }
