@@ -28,7 +28,6 @@ class OkHttpTest {
 
         OkHttpClient.Builder builder = OkHttp.builder();
         String proxyPage = new OkHttp(OkHttp.socksProxy(builder, "10.10.10.81", 9001)).get("http://canyouseeme.org/");
-
         String proxyIp = StringUtils.substringBetween(proxyPage, "id=\"ip\" type=\"text\" value=\"", "\"");
         System.out.println(proxyIp);
 

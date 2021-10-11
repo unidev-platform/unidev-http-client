@@ -9,6 +9,25 @@ Tech stack:
  * java 11
 
 
+HTTP client usage
+```
+        String page = new OkHttp().get("http://canyouseeme.org/");
+        String ip = StringUtils.substringBetween(page, "id=\"ip\" type=\"text\" value=\"", "\"");
+        System.out.println(ip);
+```
+
+Proxy request:
+```
+        OkHttpClient.Builder builder = OkHttp.builder();
+        String proxyPage = new OkHttp(OkHttp.socksProxy(builder, "10.10.10.81", 9001)).get("http://canyouseeme.org/");
+        String proxyIp = StringUtils.substringBetween(proxyPage, "id=\"ip\" type=\"text\" value=\"", "\"");
+```
+
+References
+* https://square.github.io/okhttp/recipes/
+* https://square.github.io/okhttp/
+
+
 # License
 
     Copyright (c) 2021 Denis O <denis.o@linux.com>
