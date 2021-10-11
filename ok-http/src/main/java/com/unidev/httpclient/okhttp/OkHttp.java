@@ -1,13 +1,12 @@
 package com.unidev.httpclient.okhttp;
 
-import com.unidev.httpclient.SocksSSLSocketFactory;
-import com.unidev.httpclient.SocksSocketFactory;
-import com.unidev.httpclient.TrustAllX509TrustManager;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -23,8 +22,7 @@ public class OkHttp {
      * Configure socks proxy.
      */
     public static OkHttpClient.Builder socksProxy(OkHttpClient.Builder builder, String ip, int port) {
-        builder.socketFactory(new SocksSocketFactory(ip, port));
-        builder.sslSocketFactory(new SocksSSLSocketFactory(ip, port), TrustAllX509TrustManager.INSTANCE);
+        builder.proxy(new Proxy(Proxy.Type.SOCKS, new InetSocketAddress(ip, port)));
         return builder;
     }
     /**
