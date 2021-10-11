@@ -6,9 +6,6 @@ import okhttp3.RequestBody;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 
-import java.net.InetSocketAddress;
-import java.net.Proxy;
-
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -38,7 +35,7 @@ class OkHttpTest {
     }
 
     @Test
-    void testPostRequest() {
+    void postRequest() {
         RequestBody formBody = new FormBody.Builder()
                 .add("key", "value")
                 .build();
