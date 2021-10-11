@@ -1,17 +1,14 @@
 plugins {
-    id "com.palantir.git-version" version "0.12.3"
     id 'maven-publish'
-
 }
+
+group = "com.github.unidevplatform"
 
 subprojects {
 
     apply plugin: 'java'
     apply plugin: 'idea'
     apply plugin: 'maven-publish'
-
-    group = "com.github.unidevplatform"
-    version = gitVersion()
 
     sourceCompatibility = JavaVersion.VERSION_11
     targetCompatibility = JavaVersion.VERSION_11
