@@ -4,7 +4,7 @@ plugins {
 
 }
 
-group = "com.github.unidevplatform"
+group = "com.github.unidev-platform"
 
 subprojects {
     version = gitVersion()
