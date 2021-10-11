@@ -8,6 +8,11 @@ Tech stack:
  * ok http
  * java 11
 
+Local build:
+```
+./gradlew clean build  publishToMavenLocal
+```
+
 
 HTTP client usage
 ```
