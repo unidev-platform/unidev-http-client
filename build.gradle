@@ -1,5 +1,7 @@
 plugins {
     id "com.palantir.git-version" version "0.12.3"
+    id 'maven-publish'
+
 }
 
 subprojects {
