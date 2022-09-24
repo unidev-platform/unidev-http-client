@@ -1,9 +1,6 @@
 package com.unidev.httpclient.okhttp;
 
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
+import okhttp3.*;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -16,7 +13,8 @@ import java.util.concurrent.TimeUnit;
 public class OkHttp {
 
     public static OkHttpClient.Builder builder() {
-        return new OkHttpClient.Builder();
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        return builder;
     }
 
     /**
@@ -26,6 +24,7 @@ public class OkHttp {
         builder.proxy(new Proxy(Proxy.Type.SOCKS, new InetSocketAddress(ip, port)));
         return builder;
     }
+
     /**
      * Set request timeout in MS
      */
@@ -37,6 +36,9 @@ public class OkHttp {
         return builder;
     }
 
+    /**
+     * Configure User Agent
+     */
     public static OkHttpClient.Builder userAgent(OkHttpClient.Builder builder, String userAgent) {
         builder.addNetworkInterceptor(chain -> chain.proceed(
                 chain.request()
@@ -44,6 +46,14 @@ public class OkHttp {
                         .header("User-Agent", userAgent)
                         .build()
         ));
+        return builder;
+    }
+
+    /**
+     * Set default connection pool
+     */
+    public static OkHttpClient.Builder connectionPool(OkHttpClient.Builder builder, int connections, int keepAliveSeconds) {
+        builder.connectionPool(new ConnectionPool(connections, keepAliveSeconds, TimeUnit.SECONDS));
         return builder;
     }
 
@@ -98,7 +108,6 @@ public class OkHttp {
             throw new RuntimeException(e);
         }
     }
-
 
 
 }
