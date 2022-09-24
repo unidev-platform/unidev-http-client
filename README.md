@@ -24,7 +24,7 @@ repositories {
 }
 ...
 dependencies {
-	implementation('com.github.unidev-platform:unidev-http-client:0.0.12')
+	implementation('com.github.unidev-platform:unidev-http-client:0.1.1') // release tag version
 }
 
 ```
