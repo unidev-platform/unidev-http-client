@@ -6,12 +6,8 @@ Tech stack:
  * gradle
  * apache http client
  * ok http
- * java 11
-
-Local build:
-```
-./gradlew clean build  publishToMavenLocal
-```
+ * phantomjs
+ * java 17
 
 
 HTTP client usage
@@ -26,7 +22,7 @@ repositories {
 }
 ...
 dependencies {
-	implementation('com.github.unidev-platform:unidev-http-client:0.1.1') // release tag version
+	implementation('com.unidev.http-client:apache-http-client:0.2.1')
 }
 
 ```

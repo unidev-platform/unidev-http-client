@@ -3,9 +3,10 @@ plugins {
     id "com.palantir.git-version" version "0.12.3"
 }
 
-group = "com.unidev.http-client"
+
 
 subprojects {
+    group = "com.unidev.http-client"
     version = gitVersion()
 
     apply plugin: 'java'
