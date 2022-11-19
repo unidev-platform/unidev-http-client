@@ -1,7 +1,6 @@
 package com.unidev.httpclient.phantomjs;
 
 import com.unidev.platform.Processes;
-import com.unidev.httpclient.apache.PhantomJSClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
