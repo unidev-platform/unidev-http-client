@@ -20,7 +20,9 @@ Gradle file:
 ```
 ...
 repositories {
-	maven { url 'https://jitpack.io' }
+    maven {
+        url "https://mvn.universal-development.com/public" 
+    }
 }
 ...
 dependencies {

@@ -4,7 +4,7 @@ plugins {
 
 }
 
-group = "com.github.unidev-platform"
+group = "com.unidev.unidev-http-client"
 
 subprojects {
     version = gitVersion()
@@ -12,6 +12,20 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'idea'
     apply plugin: 'maven-publish'
+    apply plugin: 'java-library'
+
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url "https://mvn.universal-development.com/public"
+        }
+    }
+
+    tasks.named('test') {
+        useJUnitPlatform()
+    }
+
 
     java {
         withJavadocJar()

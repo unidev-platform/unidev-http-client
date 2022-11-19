@@ -1,0 +1,6 @@
+dependencies {
+    api("org.apache.httpcomponents:httpclient:$httpclientVersion",
+            "org.apache.httpcomponents:httpmime:$httpmimeVersion",
+            "org.apache.httpcomponents:httpcore:$httpcoreVresion"
+    )
+}
