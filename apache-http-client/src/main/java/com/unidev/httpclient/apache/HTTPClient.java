@@ -117,7 +117,7 @@ public class HTTPClient {
     }
 
     /**
-     * Create default HTTPClient with random user agent & no proxy
+     * Create default HTTPClient with random user agent and no proxy
      */
     public void init(List<String> userAgents) {
         if (!CollectionUtils.isEmpty(userAgents)) {
