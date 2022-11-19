@@ -1,28 +1,15 @@
 package com.unidev.httpclient.apache;
 
-import com.unidev.platform.Randoms;
-import com.unidev.platform.Strings;
 import com.unidev.httpclient.socks.PlainSocksSocketFactory;
 import com.unidev.httpclient.socks.SSLSocksSocketFactory;
-import java.io.IOException;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
+import com.unidev.platform.Randoms;
+import com.unidev.platform.Strings;
 import org.apache.commons.collections4.CollectionUtils;
-import org.apache.http.Header;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpHost;
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
+import org.apache.http.*;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpDelete;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpHead;
-import org.apache.http.client.methods.HttpPatch;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpPut;
-import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.client.methods.*;
 import org.apache.http.config.RegistryBuilder;
 import org.apache.http.conn.socket.ConnectionSocketFactory;
 import org.apache.http.cookie.Cookie;
@@ -35,6 +22,10 @@ import org.apache.http.protocol.BasicHttpContext;
 import org.apache.http.protocol.ExecutionContext;
 import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Basic HTTP client, used to get stuff from web pages
@@ -111,9 +102,9 @@ public class HTTPClient {
      */
     protected RequestConfig.Builder buildRequestConfig() {
         return RequestConfig.custom().setCircularRedirectsAllowed(true)
-            .setConnectTimeout(connectionTimeout)
-            .setConnectionRequestTimeout(connectionTimeout)
-            .setSocketTimeout(connectionTimeout);
+                .setConnectTimeout(connectionTimeout)
+                .setConnectionRequestTimeout(connectionTimeout)
+                .setSocketTimeout(connectionTimeout);
     }
 
     /**
@@ -142,11 +133,11 @@ public class HTTPClient {
         rsp = httpClient.execute(httpget, context);
 
         HttpUriRequest currentReq = (HttpUriRequest) context.getAttribute(
-            ExecutionContext.HTTP_REQUEST);
+                ExecutionContext.HTTP_REQUEST);
         HttpHost currentHost = (HttpHost) context.getAttribute(
-            ExecutionContext.HTTP_TARGET_HOST);
+                ExecutionContext.HTTP_TARGET_HOST);
         currentUrl = (currentReq.getURI().isAbsolute()) ? currentReq.getURI().toString()
-            : (currentHost.toURI() + currentReq.getURI());
+                : (currentHost.toURI() + currentReq.getURI());
 
         HttpEntity entity = rsp.getEntity();
         lastResponseHeaders = rsp.getAllHeaders();
@@ -159,7 +150,7 @@ public class HTTPClient {
     }
 
     public HttpEntity getAsEntity(String url, Header... headers)
-        throws ClientProtocolException, IOException {
+            throws ClientProtocolException, IOException {
         HttpGet httpget = new HttpGet(url);
         copyHeaders(httpget, headers);
         rsp = httpClient.execute(httpget, context);
@@ -199,11 +190,11 @@ public class HTTPClient {
         rsp = httpClient.execute(httpPost, context);
 
         HttpUriRequest currentReq = (HttpUriRequest) context.getAttribute(
-            ExecutionContext.HTTP_REQUEST);
+                ExecutionContext.HTTP_REQUEST);
         HttpHost currentHost = (HttpHost) context.getAttribute(
-            ExecutionContext.HTTP_TARGET_HOST);
+                ExecutionContext.HTTP_TARGET_HOST);
         currentUrl = (currentReq.getURI().isAbsolute()) ? currentReq.getURI().toString()
-            : (currentHost.toURI() + currentReq.getURI());
+                : (currentHost.toURI() + currentReq.getURI());
 
         HttpEntity entity = rsp.getEntity();
 
@@ -217,7 +208,7 @@ public class HTTPClient {
     }
 
     public HttpEntity postAsEntity(String url, Header... headers)
-        throws ClientProtocolException, IOException {
+            throws ClientProtocolException, IOException {
         HttpPost httpPost = new HttpPost(url);
         copyHeaders(httpPost, headers);
 
@@ -311,10 +302,10 @@ public class HTTPClient {
 
     private void createProxyConnectionManager(String socksIP, int socksPort) {
         connectionManager = new PoolingHttpClientConnectionManager(
-            RegistryBuilder.<ConnectionSocketFactory>create()
-                .register("http", new PlainSocksSocketFactory(socksIP, socksPort))
-                .register("https", new SSLSocksSocketFactory(socksIP, socksPort))
-                .build()
+                RegistryBuilder.<ConnectionSocketFactory>create()
+                        .register("http", new PlainSocksSocketFactory(socksIP, socksPort))
+                        .register("https", new SSLSocksSocketFactory(socksIP, socksPort))
+                        .build()
         );
     }
 
@@ -403,7 +394,7 @@ public class HTTPClient {
     }
 
     public void setConnectionManager(
-        PoolingHttpClientConnectionManager connectionManager) {
+            PoolingHttpClientConnectionManager connectionManager) {
         this.connectionManager = connectionManager;
     }
 }

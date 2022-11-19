@@ -1,14 +1,15 @@
 package com.unidev.http;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-
+import com.unidev.httpclient.apache.HTTPClient;
 import com.unidev.platform.Randoms;
 import com.unidev.platform.Strings;
-import com.unidev.httpclient.apache.HTTPClient;
-import java.io.IOException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @Disabled
 public class ProxyHTTPClientTest {

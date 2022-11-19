@@ -3,8 +3,6 @@ package com.unidev.httpclient.apache;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.config.RequestConfig.Builder;
 
 /**
  * Common utils class
@@ -12,6 +10,7 @@ import org.apache.http.client.config.RequestConfig.Builder;
 public class HTTPClientUtils {
 
     public static List<String> USER_AGENTS = new ArrayList<>();
+
     static {
         USER_AGENTS.add("Mozilla/5.0 (X11; Linux i686; rv:2.0) Gecko/20100101 Firefox/4.0");
         USER_AGENTS.add("Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.8.1.6) Gecko/20070725 Firefox/2.0");

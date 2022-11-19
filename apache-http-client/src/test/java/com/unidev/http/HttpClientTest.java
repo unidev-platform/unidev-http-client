@@ -1,14 +1,15 @@
 package com.unidev.http;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-
+import com.unidev.httpclient.apache.HTTPClient;
 import com.unidev.platform.Randoms;
 import com.unidev.platform.Strings;
-import com.unidev.httpclient.apache.HTTPClient;
-import java.io.IOException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 
 public class HttpClientTest {
