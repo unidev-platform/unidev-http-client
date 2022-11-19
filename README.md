@@ -9,10 +9,14 @@ Tech stack:
  * phantomjs
  * java 17
 
+Modules:
+ * apache-http-client
+ * ok-http
+ * phantom-js
 
-HTTP client usage
+## HTTP client usage
 
-Gradle file:
+Usage:
 ```
 ...
 repositories {
