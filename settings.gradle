@@ -1,4 +1,4 @@
 
 rootProject.name = 'unidev-http-client'
 
-include('ok-http')
+include('ok-http', 'apache-http-client')

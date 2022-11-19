@@ -1,10 +1,9 @@
 plugins {
     id 'maven-publish'
     id "com.palantir.git-version" version "0.12.3"
-
 }
 
-group = "com.github.unidev-platform"
+group = "com.unidev.http-client"
 
 subprojects {
     version = gitVersion()
@@ -12,6 +11,33 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'idea'
     apply plugin: 'maven-publish'
+    apply plugin: 'java-library'
+
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+        maven {
+            url "https://mvn.universal-development.com/public"
+        }
+    }
+
+    dependencies {
+
+        compileOnly "org.projectlombok:lombok:${lombokVersion}"
+        annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+        testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+        testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    }
+
+    tasks.named('test') {
+        useJUnitPlatform()
+    }
+
 
     java {
         withJavadocJar()
