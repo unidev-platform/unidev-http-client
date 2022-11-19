@@ -1,4 +1,4 @@
-package com.unidev.httpclient.apache;
+package com.unidev.httpclient.phantomjs;
 
 import com.unidev.platform.Processes;
 import com.unidev.platform.model.ProcessToRun;
