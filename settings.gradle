@@ -1,4 +1,3 @@
-
 rootProject.name = 'unidev-http-client'
 
-include('ok-http', 'apache-http-client')
+include('ok-http', 'apache-http-client', 'phantom-js')
