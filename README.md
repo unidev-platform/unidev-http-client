@@ -26,7 +26,7 @@ repositories {
 }
 ...
 dependencies {
-	implementation('com.unidev.http-client:apache-http-client:0.2.1')
+	implementation('com.unidev.http-client:apache-http-client:0.2.2')
 }
 
 ```
