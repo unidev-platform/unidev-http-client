@@ -57,6 +57,11 @@ public class OkHttp {
         return builder;
     }
 
+    public static OkHttpClient.Builder connectionPool(OkHttpClient.Builder builder, ConnectionPool connectionPool) {
+        builder.connectionPool(connectionPool);
+        return builder;
+    }
+
     public static OkHttpClient httpClient(OkHttpClient.Builder builder) {
         return new OkHttpClient(builder);
     }
